@@ -36,5 +36,9 @@ rake assets:precompile
 * Deployment instructions
 
 * References
-https://scotch.io/tutorials/build-a-blog-with-ruby-on-rails-part-1
-https://medium.freecodecamp.org/lets-create-an-intermediate-level-ruby-on-rails-application-d7c6e997c63f
+https://scotch.io/tutorials/build-a-blog-with-ruby-on-rails-part-1  
+https://scotch.io/tutorials/build-a-blog-with-ruby-on-rails-part-2  
+https://medium.freecodecamp.org/lets-create-an-intermediate-level-ruby-on-rails-application-d7c6e997c63f  
+https://startbootstrap.com/template-overviews/clean-blog/  
+
+
