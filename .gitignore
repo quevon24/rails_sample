@@ -106,11 +106,17 @@ fabric.properties
 
 # *.iml
 # modules.xml
-# .idea/misc.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/untitled.iml
+.idea/.rakeTasks
+.idea/codeStyles
 # *.ipr
 
 # Sonarlint plugin
 .idea/sonarlint
 
+.idea/.generators
 
 # End of https://www.gitignore.io/api/rails,rubymine
