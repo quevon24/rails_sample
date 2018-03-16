@@ -38,6 +38,11 @@ gem 'bootstrap-sass', '~> 3.3'
 
 gem 'ckeditor', '~> 4.1'
 
+gem 'font-awesome-sass', '~> 5.0.6'
+
+# Pagination
+gem 'kaminari'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

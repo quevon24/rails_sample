@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Untitled</title>
-    <%= csrf_meta_tags %>
+<html lang="en">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Clean Blog - Start Bootstrap Theme</title>
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<%= render 'application/header_nav' %>
+
+<!-- Page Header -->
+<%= render 'application/header' %>
+
+
+<div class="container"><!-- Main Content -->
+
+  <%= yield %>
+
+</div><!-- / Main Content -->
+
+<hr>
+
+<!-- Footer -->
+<%= render 'application/footer' %>
+
+</body>
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </html>

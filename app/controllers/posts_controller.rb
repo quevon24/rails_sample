@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   # Index action to render all posts
   def index
     @posts = Post.all
+    @posts = @posts.page(params[:page]).per(3)
   end
 
   # New action for creating post

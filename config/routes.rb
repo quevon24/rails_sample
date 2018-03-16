@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # update and destroy
   resources :posts
 
+  # Static pages route
+  get "/pages/*page" => "pages#show"
+
 end
