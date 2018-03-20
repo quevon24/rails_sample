@@ -27,7 +27,17 @@
 
 <div class="container"><!-- Main Content -->
 
-  <%= yield %>
+  <div class="row">
+
+    <div class="col-lg-10 col-md-10 mx-auto">
+      <%= yield %>
+    </div>
+
+    <div class="col-lg-2 col-md-2 mx-auto">
+      <%= render 'shared/nav' %>
+    </div>
+
+  </div>
 
 </div><!-- / Main Content -->
 

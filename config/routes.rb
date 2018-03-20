@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   # The resources line provides us with all of the actions available, and the include: new, index, create, show, edit,
   # update and destroy
+  # Create (posts#new, posts#create)
+  # Read (posts#index, posts#show)
+  # Update (posts#edit, posts#update)
+  # Destroy (posts#destroy)
   resources :posts
 
   # Static pages route

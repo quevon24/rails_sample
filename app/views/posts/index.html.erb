@@ -1,29 +1,27 @@
-<div class="row">
-  <div class="col-lg-8 col-md-10 mx-auto">
 
-    <% @posts.each do |post| %>
-      <div class="post-preview">
 
-        <%= link_to post_path(post) do %>
-          <h2 class="post-title">
-            <%= post.title %>
-          </h2>
-          <h3 class="post-subtitle">
-            <%= raw(post.body).truncate(358) %>
-          </h3>
-        <% end %>
-        <p class="post-meta">Posted by
-          <a href="#">Start Bootstrap</a>
-          <%= post.created_at.strftime('%b %d, %Y') %></p>
-      </div>
-      <hr>
-    <% end %>
+  <% @posts.each do |post| %>
+    <div class="post-preview">
 
-    <!-- Pager -->
-    <div class="clearfix">
-
-      <%= paginate @posts %>
-
+      <%= link_to post_path(post) do %>
+        <h2 class="post-title">
+          <%= post.title %>
+        </h2>
+        <h3 class="post-subtitle">
+          <%= raw(post.body).truncate(358) %>
+        </h3>
+      <% end %>
+      <p class="post-meta">Posted by
+        <a href="#">Start Bootstrap</a>
+        <%= post.created_at.strftime('%b %d, %Y') %></p>
     </div>
+    <hr>
+  <% end %>
+
+  <!-- Pager -->
+  <div class="clearfix">
+
+    <%= paginate @posts %>
+
   </div>
-</div>
+
