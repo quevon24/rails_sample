@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # We set the root of our application as posts/index, so whenever a visitor points her browser to the root of our
@@ -15,5 +17,20 @@ Rails.application.routes.draw do
 
   # Static pages route
   get "/pages/*page" => "pages#show"
+
+  # Devise custom controllers and routes
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      passwords: 'users/passwords',
+      registrations: 'users/registrations'
+  }
+
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
+
+  devise_scope :user do
+    delete 'logout', to: 'devise/sessions#destroy'
+  end
 
 end

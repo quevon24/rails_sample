@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   # a post belongs to a category
   belongs_to :category
+  belongs_to :user
   validates :title, :body, :category_id, presence: true
 
 end

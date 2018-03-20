@@ -40,6 +40,25 @@ gem 'ckeditor', '~> 4.1'
 
 gem 'font-awesome-sass', '~> 5.0.6'
 
+# Admin
+gem 'rails_admin', '~> 1.3'
+
+# Secure password
+# gem install bcrypt --platform=ruby
+# gem 'bcrypt'
+
+# Authentication
+gem 'devise'
+
+# Restrict access to some parts of the app
+gem 'cancancan'
+
+# Create roles easily
+gem "rolify"
+
+# Toast notifications
+gem 'toastr-rails'
+
 # Pagination
 gem 'kaminari'
 

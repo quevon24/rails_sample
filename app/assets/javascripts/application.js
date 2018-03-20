@@ -18,3 +18,4 @@
 //= require clean-blog.min
 //= require_tree .
 //= require ckeditor/init
+//= require toastr

@@ -15,6 +15,8 @@
  *= require bootstrap.min
  *= require clean-blog.min
 
+ *= require toastr
+
  */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Quicksand|Rubik');

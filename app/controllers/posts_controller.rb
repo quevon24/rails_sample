@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
   # makes methods available to the controller
   # “before_action” filter will be triggered only before the “show”, “edit”, “update” and “destroy” actions of this Posts controller.
+  # “before_action” :authenticate_user! can only access to :index and :show
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :show, :destroy]
+
+  # This method loads the resource into an instance variable and authorizes it automatically for every action
+  # in posts_controller.rb. If the user is not able to perform the given action, the CanCan::AccessDenied exception is raised.
+  # load_and_authorize_resource
 
   # Index action to render all posts
   def index
@@ -33,6 +39,7 @@ class PostsController < ApplicationController
     # posts database. So with this the “@post” now holds an instance of the “Post” model with values supplied by
     # the browser and held by the params hash
     @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
       flash[:notice] = "Successfully created post!"
       # redirect_to post_path(@post)

@@ -15,11 +15,25 @@
           <%= link_to "Home", root_path, :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", {:controller => 'pages', :action => 'show', :page => 'about'}, :class => "nav-link" %>
+          <%= link_to "About", {:controller => '/pages', :action => 'show', :page => 'about'}, :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact", {:controller => 'pages', :action => 'show', :page => 'contact'}, :class => "nav-link" %>
+          <%= link_to "Contact", {:controller => '/pages', :action => 'show', :page => 'contact'}, :class => "nav-link" %>
         </li>
+
+        <% if current_user.nil? %>
+          <li class="nav-item">
+          <%= link_to new_user_session_path, class: 'nav-link' do %>Sign in<% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+          <%= link_to dashboard_path(current_user), class: 'nav-link' do %>Admin panel<% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, class: 'nav-link' do %>Logout<% end %>
+          </li>
+        <% end %>
+
       </ul>
     </div>
   </div>
