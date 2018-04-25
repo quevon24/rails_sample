@@ -19,3 +19,6 @@
 //= require_tree .
 //= require ckeditor/init
 //= require toastr
+//= require jquery-ui.min
+//= require app
+

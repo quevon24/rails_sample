@@ -81,3 +81,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Nokogiri
+gem 'nokogiri', '1.8.1'
+
+# rack
+gem 'rack', '2.0.3'

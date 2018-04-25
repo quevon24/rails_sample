@@ -14,6 +14,55 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+  <style type="text/css">
+    .posts-search .results .ui-widget-content {
+      background: #fff;
+      font-size: .9em;
+      padding: .5em 0;
+      border-color: #ddd;
+      box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);
+      line-height: 1.2;
+      max-height: 20em;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+
+    .posts-search .results .ui-menu-item {
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      /*padding: .4em .6em .4em 6.2em;*/
+      position: relative;
+      border: 0;
+      border-left: 5px solid transparent;
+      /*height: 6.5em;*/
+    }
+
+    .posts-search .results .ui-state-focus {
+      background: #fff;
+      border-left-color: #08c;
+      font-weight: 300;
+    }
+
+    .posts-search .results .ui-menu-item .title {
+      display: block;
+      color: #555;
+    }
+
+    .posts-search .results .ui-menu-item .category {
+      display: block;
+      font-size: .8em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: .6em;
+      letter-spacing: 1px;
+    }
+
+    .posts-search .results .ui-state-focus .category,
+    .posts-search .results .ui-state-focus .title {
+      color: #08c;
+    }
+
+  </style>
+
 </head>
 
 <body>
@@ -59,5 +108,14 @@
       <% end %>
   </script>
 <% end %>
+
+
+
+<%= javascript_include_tag "/resources/posts.js" %>
+<script>
+    $(function () {
+        new app.Posts;
+    });
+</script>
 
 </html>

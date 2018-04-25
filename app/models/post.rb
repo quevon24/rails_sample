@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :title, :body, :category_id, presence: true
 
+  def self.search(term)
+    where('LOWER(title) LIKE :term OR LOWER(body) LIKE :term', term: "%#{term.downcase}%")
+  end
+
 end

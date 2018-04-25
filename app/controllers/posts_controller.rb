@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # makes methods available to the controller
   # “before_action” filter will be triggered only before the “show”, “edit”, “update” and “destroy” actions of this Posts controller.
   # “before_action” :authenticate_user! can only access to :index and :show
-  before_action :authenticate_user!, except: [:index, :show, :json_find_posts, :json_test]
+  before_action :authenticate_user!, except: [:index, :show, :json_find_posts, :json_test, :json_search]
   before_action :find_post, only: [:edit, :update, :show, :destroy]
 
   # This method loads the resource into an instance variable and authorizes it automatically for every action
@@ -117,6 +117,13 @@ class PostsController < ApplicationController
       where['category_id'] = params[:category_id]
     end
     @posts = Post.where(where)
+  end
+
+  def json_search
+    respond_to do |format|
+      format.html
+      format.json {@posts = Post.search(params[:term])}
+    end
   end
 
 end

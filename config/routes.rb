@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     collection do
       get 'json_test'
       get 'json_find_posts'
+      get 'json_search'
     end
   end
 
