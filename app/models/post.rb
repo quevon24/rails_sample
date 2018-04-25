@@ -8,7 +8,10 @@ class Post < ApplicationRecord
   validates :title, :body, :category_id, presence: true
 
   def self.search(term)
-    where('LOWER(title) LIKE :term OR LOWER(body) LIKE :term', term: "%#{term.downcase}%")
+    # Buscar term en title o body
+    # where('LOWER(title) LIKE :term OR LOWER(body) LIKE :term', term: "%#{term.downcase}%")
+    # Buscar term en title, body o category name
+    includes(:category).where('LOWER(title) LIKE :term OR LOWER(body) LIKE :term OR LOWER(categories.name) LIKE :term ', term: "%#{term.downcase}%").references(:category)
   end
 
 end
