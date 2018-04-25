@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
 
   # https://stackoverflow.com/questions/24279948/rails-validate-only-on-create-or-on-update-when-field-is-not-blank
+  #
+  # https://www.lugolabs.com/articles/jquery-ui-autocomplete-with-ruby-on-rails
 
   # a post belongs to a category
   belongs_to :category
