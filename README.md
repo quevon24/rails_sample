@@ -45,8 +45,11 @@ rake db:migrate:down VERSION=20180320190125
 **- Deshacer n numero de migraciones**  
 rake db:rollback STEP=2  
 **- Migracion remover campos**  
-rails g migration remove_columns_from_users superadmin_role:boolean editor_role:boolean user_role:boolean  
-
+rails g migration remove_columns_from_users superadmin_role:boolean editor_role:boolean user_role:boolean    
+**- Crear usuario**  
+newuser = User.new({email: 'admin@admin.com', password: 'qwerty123', password_confirmation: 'qwerty123'})  
+newuser.skip_confirmation!  
+newuser.save  
 
 * Ruby version
 

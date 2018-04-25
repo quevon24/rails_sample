@@ -45,6 +45,7 @@ gem 'rails_admin', '~> 1.3'
 
 # Secure password
 # gem install bcrypt --platform=ruby
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 # gem 'bcrypt'
 
 # Authentication

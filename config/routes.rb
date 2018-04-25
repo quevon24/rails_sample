@@ -13,10 +13,29 @@ Rails.application.routes.draw do
   # Read (posts#index, posts#show)
   # Update (posts#edit, posts#update)
   # Destroy (posts#destroy)
-  resources :posts
+  #
+  # original: resources :posts
+  #
+  # actions personalizados:
+  # resources :posts do
+  #   collection do
+  #     get 'json_test'
+  #   end
+  # end
+
+  resources :posts do
+    collection do
+      get 'json_test'
+      get 'json_find_posts'
+    end
+  end
+
+  # alternativa
+  # get 'json_test' => "posts#json_test"
 
   # Static pages route
   get "/pages/*page" => "pages#show"
+
 
   # Devise custom controllers and routes
   devise_for :users, controllers: {

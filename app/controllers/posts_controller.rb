@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # makes methods available to the controller
   # “before_action” filter will be triggered only before the “show”, “edit”, “update” and “destroy” actions of this Posts controller.
   # “before_action” :authenticate_user! can only access to :index and :show
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :json_find_posts, :json_test]
   before_action :find_post, only: [:edit, :update, :show, :destroy]
 
   # This method loads the resource into an instance variable and authorizes it automatically for every action
@@ -14,14 +14,14 @@ class PostsController < ApplicationController
 
     if params[:category].blank?
       @posts = Post.all
-      @posts = @posts.page(params[:page]).per(3).order("created_at DESC")
+      @posts = @posts.page(params[:page]).per(3).order('created_at DESC')
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @posts = Post.where(category_id: @category_id).order("created_at DESC").page(params[:page]).per(3)
+      @posts = Post.where(category_id: @category_id).order('created_at DESC').page(params[:page]).per(3)
     end
 
-      # @posts = Post.all
-      # @posts = @posts.page(params[:page]).per(3)
+    # @posts = Post.all
+    # @posts = @posts.page(params[:page]).per(3)
   end
 
   # New action for creating post
@@ -41,11 +41,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      flash[:notice] = "Successfully created post!"
+      flash[:notice] = 'Successfully created post!'
       # redirect_to post_path(@post)
       redirect_to @post
     else
-      flash[:alert] = "Error creating new post!"
+      flash[:alert] = 'Error creating new post!'
       render :new
     end
   end
@@ -61,12 +61,12 @@ class PostsController < ApplicationController
   def update
     # The “update” action also benefits from the before_action that find the relevant post for us based on the URL params.
     if @post.update_attributes(post_params)
-      flash[:notice] = "Successfully updated post!"
+      flash[:notice] = 'Successfully updated post!'
       # redirect_to post_path(@post)
       redirect_to @post
       # redirect_to :controller => 'posts', :action => 'show',
     else
-      flash[:alert] = "Error updating post!"
+      flash[:alert] = 'Error updating post!'
       render :edit
     end
   end
@@ -84,11 +84,11 @@ class PostsController < ApplicationController
     # to the root_path defined in the routes.rb file (see in a few lines), flashing a success notice.
     # The row gets deleted in the database.
     if @post.delete
-      flash[:notice] = "Successfully deleted post!"
+      flash[:notice] = 'Successfully deleted post!'
       # redirect_to posts_path
       redirect_to root_path
     else
-      flash[:alert] = "Error updating post!"
+      flash[:alert] = 'Error updating post!'
     end
   end
 
@@ -101,6 +101,22 @@ class PostsController < ApplicationController
     # It is used to extract from hash of parameters sent by url from the browser and then look into the posts db for the id
     # the post object is returned in the @post, @post is an instance variable and is now available in our "views"
     @post = Post.find(params[:id])
+  end
+
+  def json_test
+    # http://127.0.0.1:3000/posts/json_test
+    @posts = Post.all
+    # render inline: "Some string to the client/user"
+    # render template: "posts/json_test"
+  end
+
+  def json_find_posts
+    # http://127.0.0.1:3000/posts/json_find_posts/?category_id=1
+    where = {}
+    if params[:category_id]
+      where['category_id'] = params[:category_id]
+    end
+    @posts = Post.where(where)
   end
 
 end
